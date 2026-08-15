@@ -3,7 +3,9 @@
 Single entry point: `python main.py`
 
 Runs a live demo of Task 1 (ticket triage) and Task 2 (account brief)
-against the provided mock dataset.
+against the provided mock dataset. The FastAPI server
+(`uvicorn app.api:app`) and Streamlit UI (`streamlit run ui/streamlit_app.py`)
+are additional entry points — see README.md.
 """
 
 from __future__ import annotations
@@ -79,6 +81,9 @@ def main() -> int:
 
     print(f"\n{SEP}")
     print("Demo complete.")
+    print("  Run the API server:      uvicorn app.api:app --reload")
+    print("  Run the eval harness:    python evals/run_evals.py")
+    print("  Run the Streamlit UI:    streamlit run ui/streamlit_app.py")
     print(SEP)
     return 0
 
