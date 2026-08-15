@@ -1,0 +1,106 @@
+[
+  {
+    "id": "triage-01-clear-bug",
+    "description": "Clear-cut production bug with an error code that should hit the KB.",
+    "adversarial": false,
+    "input": {
+      "subject": "DataBridge Pro Connectors failing for all users",
+      "body": "Critical issue: our production Connectors pipeline has failed for all 47 users since yesterday morning. Error: ERR_CONNECTION_TIMEOUT after 30s. This is business critical, please advise urgently."
+    },
+    "acceptance": {
+      "issue_category_in": ["Bug", "Performance", "Integration"],
+      "urgency_tier_in": ["P1", "P2"],
+      "kb_match_required": true,
+      "min_draft_response_words": 15
+    }
+  },
+  {
+    "id": "triage-02-billing",
+    "description": "Straightforward billing/plan question.",
+    "adversarial": false,
+    "input": {
+      "subject": "Question about our invoice for this month",
+      "body": "Hi, our latest invoice shows a higher seat count than what we actually have licensed. Can someone review our billing and confirm the correct charge?"
+    },
+    "acceptance": {
+      "issue_category_in": ["Billing"],
+      "urgency_tier_in": ["P2", "P3", "P4"],
+      "kb_match_required": false,
+      "min_draft_response_words": 15
+    }
+  },
+  {
+    "id": "triage-03-sso-auth",
+    "description": "SSO error code that should map to the authentication-sso.md troubleshooting doc.",
+    "adversarial": false,
+    "input": {
+      "subject": "New hires cannot log in via SSO to SecureVault",
+      "body": "All new employees added this week are getting SAML_ASSERTION_EXPIRED when trying to authenticate into SecureVault via our IDP. Existing users are unaffected."
+    },
+    "acceptance": {
+      "issue_category_in": ["Integration", "Bug"],
+      "urgency_tier_in": ["P1", "P2", "P3"],
+      "kb_match_required": true,
+      "min_draft_response_words": 15
+    }
+  },
+  {
+    "id": "triage-04-feature-request",
+    "description": "Low-urgency feature request, no error, no outage language.",
+    "adversarial": false,
+    "input": {
+      "subject": "Feature idea: bulk export for AnalyticsHub reports",
+      "body": "It would be great if AnalyticsHub supported exporting multiple reports at once instead of one at a time. Not urgent, just a nice-to-have that would save our analysts some time."
+    },
+    "acceptance": {
+      "issue_category_in": ["Feature Request"],
+      "urgency_tier_in": ["P3", "P4"],
+      "kb_match_required": false,
+      "min_draft_response_words": 10
+    }
+  },
+  {
+    "id": "triage-05-onboarding",
+    "description": "New-org onboarding / setup question.",
+    "adversarial": false,
+    "input": {
+      "subject": "Getting started with WorkflowEngine",
+      "body": "We just signed up and are trying to onboard our team onto WorkflowEngine. Is there a setup checklist or recommended first steps for a brand new organisation?"
+    },
+    "acceptance": {
+      "issue_category_in": ["Onboarding", "How-To"],
+      "urgency_tier_in": ["P3", "P4"],
+      "kb_match_required": true,
+      "min_draft_response_words": 10
+    }
+  },
+  {
+    "id": "triage-06-adversarial-ambiguous",
+    "description": "ADVERSARIAL: vague subject, no product named, contradictory urgency signals.",
+    "adversarial": true,
+    "input": {
+      "subject": "question",
+      "body": "hi it's kind of not working, everything seems broken but also no rush whenever you get a chance please advise ASAP thanks"
+    },
+    "acceptance": {
+      "must_not_crash": true,
+      "schema_valid": true,
+      "issue_category_in": ["Bug", "Unknown", "How-To", "Performance"],
+      "urgency_tier_in": ["P1", "P2", "P3", "P4"]
+    }
+  },
+  {
+    "id": "triage-07-adversarial-malformed",
+    "description": "ADVERSARIAL: malformed input — subject only, empty body.",
+    "adversarial": true,
+    "input": {
+      "subject": "help",
+      "body": ""
+    },
+    "acceptance": {
+      "must_not_crash": true,
+      "schema_valid": true,
+      "urgency_tier_in": ["P1", "P2", "P3", "P4"]
+    }
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "brief-01-has-ticket-and-notes",
+    "description": "Account with both a joined ticket and escalation notes — should surface flags from both sources.",
+    "adversarial": false,
+    "input": {"account_id": "ACC-3336"},
+    "acceptance": {
+      "found": true,
+      "min_open_risks": 1,
+      "churn_risk_level_in": ["Medium", "High"]
+    }
+  },
+  {
+    "id": "brief-02-at-risk-with-ticket",
+    "description": "At-risk account with a joined ticket and escalation notes.",
+    "adversarial": false,
+    "input": {"account_id": "ACC-1785"},
+    "acceptance": {
+      "found": true,
+      "min_open_risks": 1,
+      "churn_risk_level_in": ["Medium", "High"]
+    }
+  },
+  {
+    "id": "brief-03-healthy-low-risk",
+    "description": "Healthy, increasing-usage account with no escalation notes — should come back low risk.",
+    "adversarial": false,
+    "input": {"account_id": "ACC-3033"},
+    "acceptance": {
+      "found": true,
+      "churn_risk_level_in": ["Low"]
+    }
+  },
+  {
+    "id": "brief-04-churning-high-risk",
+    "description": "Explicitly 'Churning' health status with declining usage and multiple escalation notes.",
+    "adversarial": false,
+    "input": {"account_id": "ACC-2944"},
+    "acceptance": {
+      "found": true,
+      "min_open_risks": 2,
+      "churn_risk_level_in": ["High"]
+    }
+  },
+  {
+    "id": "brief-05-adversarial-incomplete-data",
+    "description": "ADVERSARIAL: new account with empty escalation_notes and no tickets in the last 90 days.",
+    "adversarial": true,
+    "input": {"account_id": "ACC-7893"},
+    "acceptance": {
+      "found": true,
+      "must_not_crash": true,
+      "tickets_considered_equals": 0
+    }
+  },
+  {
+    "id": "brief-06-adversarial-missing-account",
+    "description": "ADVERSARIAL: account_id that does not exist in accounts.json at all.",
+    "adversarial": true,
+    "input": {"account_id": "ACC-00000-DOES-NOT-EXIST"},
+    "acceptance": {
+      "found": false,
+      "must_not_crash": true,
+      "error_present": true
+    }
+  }
+]
