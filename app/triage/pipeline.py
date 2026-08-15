@@ -31,7 +31,7 @@ from app.triage.models import (
     _LLMTriageJudgment,
 )
 
-_PROMPT_PATH = Path(__file__).resolve().parent.parent.parent / "prompts" / "triage_v1.md"
+_PROMPT_PATH = Path(__file__).resolve().parent.parent.parent / "prompts" / "triage_v2.md"
 
 _CATEGORY_TO_TEAM = {
     IssueCategory.BUG: "Product Engineering",
